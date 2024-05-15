@@ -9,6 +9,7 @@ import { Pais } from '../pais';
 })
 export class PaisListComponent implements OnInit  {
 
+  antiguo: number = 0;
   selectedPais!: Pais;
   selected = false;
   paises: Array<Pais> = [];
@@ -23,11 +24,23 @@ export class PaisListComponent implements OnInit  {
 
   ngOnInit(): void{
     this.getPaises();
+    this.getPaisAntiguo(this.paises);
   }
 
   onSelected(pais: Pais): void{
     this.selected = true;
     this.selectedPais = pais;
+  }
+
+  getPaisAntiguo(paises: Array<Pais>){
+    let menor: number = 100000000;
+    for ( let  i = 0; i < paises.length; i++){
+      if (menor > paises[i].formation_year){
+        menor = paises[i].formation_year
+
+      }
+    }
+    this.antiguo = menor;
   }
 
 }
