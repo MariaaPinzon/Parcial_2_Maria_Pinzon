@@ -19,12 +19,13 @@ export class PaisListComponent implements OnInit  {
   getPaises() : void {
     this.paisService.getPaises().subscribe((paises) =>{
       this.paises = paises;
+      this.getPaisAntiguo(this.paises); 
+
     });
   }
 
   ngOnInit(): void{
     this.getPaises();
-    this.getPaisAntiguo(this.paises);
   }
 
   onSelected(pais: Pais): void{
