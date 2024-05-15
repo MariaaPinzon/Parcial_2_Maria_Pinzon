@@ -8,7 +8,7 @@ import { Pais } from '../pais';
   styleUrl: './pais-list.component.css'
 })
 export class PaisListComponent implements OnInit  {
-
+  paisAntiguo : string = "";
   antiguo: number = 0;
   selectedPais!: Pais;
   selected = false;
@@ -35,13 +35,16 @@ export class PaisListComponent implements OnInit  {
 
   getPaisAntiguo(paises: Array<Pais>){
     let menor: number = 100000000;
+    let paisAntiguo : string = "";
     for ( let  i = 0; i < paises.length; i++){
       if (menor > paises[i].formation_year){
         menor = paises[i].formation_year
+        paisAntiguo = paises[i].name
 
       }
     }
     this.antiguo = menor;
+    this.paisAntiguo = paisAntiguo; 
   }
 
 }
